@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Newsletter — Your Name</title>
+
+    <meta
+        name="description"
+        content="Subscribe to my newsletter."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <header class="site-header">
+
+        <nav class="nav container">
+
+            <a href="index.html" class="logo">
+                Josh Engwau
+            </a>
+
+            <div class="nav-links">
+
+                <a href="insights.html">
+                    Home
+                </a>
+
+                <a href="insights.html">
+                    Insights
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="newsletter.html" class="nav-newsletter">
+                    Newsletter
+                </a>
+
+                <button
+                    id="theme-toggle"
+                    class="theme-toggle"
+                    type="button"
+                >
+                    Dark Mode
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="newsletter-page container">
+
+            <p class="eyebrow">
+                Newsletter
+            </p>
+
+            <h1>
+                Get my latest ideas in your inbox.
+            </h1>
+
+            <p class="newsletter-intro">
+                I share insights, lessons, observations
+                and interesting things I'm learning.
+                No noise. Just occasional emails worth reading.
+            </p>
+
+
+            <form
+                action="https://buttondown.com/api/emails/embed-subscribe/JoshEngwau"
+                method="post"
+                class="newsletter-form"
+            >
+
+                <label for="email">
+                    Email address
+                </label>
+
+                <div class="newsletter-form-row">
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                    <input
+                        type="hidden"
+                        name="embed"
+                        value="1"
+                    >
+
+                    <button type="submit">
+                        Subscribe
+                    </button>
+
+                </div>
+
+                <p class="newsletter-note">
+                    You can unsubscribe at any time.
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <p>
+                © 2026 Your Name
+            </p>
+
+            <div class="footer-links">
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="newsletter.html">
+                    Newsletter
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

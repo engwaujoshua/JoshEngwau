@@ -1,6 +1,46 @@
-/* ------------------------------
-   Base
------------------------------- */
+/* =========================================================
+   PERSONAL WEBSITE — MAIN STYLESHEET
+   ========================================================= */
+
+
+/* =========================================================
+   1. COLOR VARIABLES
+   ========================================================= */
+
+:root {
+    /*
+       Light mode
+       Warm ivory/cream inspired by the tones in your photo.
+    */
+
+    --background: #f5f1ee;
+    --text: #171313;
+    --muted: #706866;
+    --border: #ddd5d0;
+    --soft-background: #ebe4df;
+
+    /* Newsletter / accent */
+    --red: #d71920;
+    --red-hover: #b51218;
+}
+
+
+/*
+   Dark mode
+*/
+
+body.dark-mode {
+    --background: #111111;
+    --text: #ffffff;
+    --muted: #b5b5b5;
+    --border: #333333;
+    --soft-background: #1b1b1b;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -8,21 +48,45 @@
     padding: 0;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     line-height: 1.6;
-    color: #171717;
-    background: #ffffff;
+
+    color: var(--text);
+    background-color: var(--background);
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
 }
+
 
 a {
     color: inherit;
     text-decoration: none;
 }
+
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+img {
+    max-width: 100%;
+}
+
 
 .container {
     width: min(1100px, 90%);
@@ -30,250 +94,1203 @@ a {
 }
 
 
-/* ------------------------------
-   Navigation
------------------------------- */
+/* =========================================================
+   3. NAVIGATION
+   ========================================================= */
 
 .site-header {
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid var(--border);
+
+    background-color: var(--background);
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease;
 }
 
+
 .nav {
-    min-height: 72px;
+    min-height: 76px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 30px;
 }
 
+
+/* ---------------------------------------------------------
+   LOGO / YOUR NAME
+   --------------------------------------------------------- */
+
 .logo {
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-family:
+        "Old English Text MT",
+        "UnifrakturMaguntia",
+        "UnifrakturCook",
+        "Lucida Blackletter",
+        serif;
+
+    font-size: 2rem;
+
+    font-weight: 900;
+
+    letter-spacing: -0.04em;
+
+    color: #000000;
+
+    white-space: nowrap;
+
+    transition: opacity 0.2s ease;
 }
+
+
+.logo:hover {
+    opacity: 0.7;
+}
+
+
+/*
+   White logo in dark mode
+*/
+
+body.dark-mode .logo {
+    color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   NAVIGATION LINKS
+   --------------------------------------------------------- */
 
 .nav-links {
     display: flex;
+
+    align-items: center;
+
     gap: 24px;
+
     font-size: 0.95rem;
 }
 
-.nav-links a:hover {
-    opacity: 0.6;
+
+.nav-links > a {
+    transition: opacity 0.2s ease;
 }
 
 
-/* ------------------------------
-   Hero
------------------------------- */
+.nav-links > a:hover {
+    opacity: 0.55;
+}
+
+
+/* ---------------------------------------------------------
+   NEWSLETTER NAVIGATION BUTTON
+   --------------------------------------------------------- */
+
+.nav-newsletter {
+    color: #ffffff !important;
+
+    background-color: var(--red);
+
+    padding: 9px 15px;
+
+    border-radius: 6px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.nav-newsletter:hover {
+    opacity: 1 !important;
+
+    background-color: var(--red-hover);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   4. DARK / LIGHT MODE BUTTON
+   ========================================================= */
+
+.theme-toggle {
+    border: none;
+
+    padding: 9px 15px;
+
+    border-radius: 6px;
+
+    background-color: #000000;
+    color: #ffffff;
+
+    font-size: 0.9rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.85;
+}
+
+
+/*
+   In dark mode the button becomes:
+
+   White background
+   Black text
+
+   and says "Light Mode" via JavaScript.
+*/
+
+body.dark-mode .theme-toggle {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+/* =========================================================
+   5. HERO / HOMEPAGE
+   ========================================================= */
 
 .hero {
-    padding-top: 120px;
-    padding-bottom: 120px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    min-height: 650px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 60px;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
+
+
+.hero-content {
+    max-width: 700px;
+}
+
+
+/* Small uppercase label */
 
 .eyebrow {
     text-transform: uppercase;
+
     letter-spacing: 0.12em;
+
     font-size: 0.75rem;
+
     font-weight: 700;
-    color: #666666;
+
+    color: var(--muted);
+
     margin-bottom: 18px;
 }
 
+
+/* Main homepage heading */
+
 .hero h1 {
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+
     line-height: 1.02;
-    letter-spacing: -0.04em;
-    max-width: 850px;
+
+    letter-spacing: -0.05em;
 }
+
+
+/* Homepage description */
 
 .hero-description {
     max-width: 650px;
-    font-size: 1.2rem;
-    color: #666666;
+
+    font-size: 1.15rem;
+
+    color: var(--muted);
+
     margin-top: 30px;
 }
 
+
+/* Hero buttons */
+
 .hero-actions {
     display: flex;
+
     gap: 12px;
+
     flex-wrap: wrap;
+
     margin-top: 35px;
 }
 
 
-/* ------------------------------
-   Buttons
------------------------------- */
+/* =========================================================
+   6. HOMEPAGE PHOTO
+   ========================================================= */
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-image img {
+    width: 100%;
+
+    height: 100%;
+
+    max-height: 560px;
+
+    object-fit: cover;
+
+    /*
+       Keeps the face positioned nicely toward the top.
+    */
+
+    object-position: center top;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 50px rgba(60, 45, 40, 0.12);
+}
+
+
+/*
+   Reduce photo shadow in dark mode.
+*/
+
+body.dark-mode .hero-image img {
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   7. GENERAL BUTTONS
+   ========================================================= */
 
 .button {
     display: inline-block;
+
     padding: 12px 20px;
-    background: #171717;
+
+    background-color: #111111;
+
     color: #ffffff;
+
     border-radius: 6px;
-    font-weight: 600;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
+
 
 .button:hover {
-    opacity: 0.8;
-}
+    transform: translateY(-2px);
 
-.button-secondary {
-    background: #f2f2f2;
-    color: #171717;
+    opacity: 0.9;
 }
 
 
-/* ------------------------------
-   Sections
------------------------------- */
+/* ---------------------------------------------------------
+   RED NEWSLETTER BUTTON
+   --------------------------------------------------------- */
+
+.button-red {
+    background-color: var(--red);
+
+    color: #ffffff;
+}
+
+
+.button-red:hover {
+    background-color: var(--red-hover);
+
+    opacity: 1;
+}
+
+
+/*
+   Regular black buttons become white in dark mode.
+*/
+
+body.dark-mode .button:not(.button-red) {
+    background-color: #ffffff;
+
+    color: #111111;
+}
+
+
+/* =========================================================
+   8. GENERAL SECTIONS
+   ========================================================= */
 
 .section {
     padding-top: 90px;
+
     padding-bottom: 90px;
 }
 
+
 .section-heading {
     display: flex;
+
     align-items: end;
+
     justify-content: space-between;
+
     margin-bottom: 35px;
 }
 
+
 .section-heading h2 {
     font-size: 2.2rem;
+
     letter-spacing: -0.03em;
 }
 
 
-/* ------------------------------
-   Insight cards
------------------------------- */
+.section-heading > a {
+    color: var(--muted);
+
+    transition: color 0.2s ease;
+}
+
+
+.section-heading > a:hover {
+    color: var(--text);
+}
+
+
+/* =========================================================
+   9. INSIGHT CARDS ON HOMEPAGE
+   ========================================================= */
 
 .insights-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 24px;
 }
 
+
 .insight-card {
-    border-top: 1px solid #171717;
+    border-top: 1px solid var(--text);
+
     padding-top: 20px;
 }
 
+
 .insight-date {
-    color: #777777;
+    color: var(--muted);
+
     font-size: 0.85rem;
+
     margin-bottom: 20px;
 }
+
 
 .insight-card h3 {
     font-size: 1.4rem;
+
     line-height: 1.2;
+
     margin-bottom: 15px;
 }
 
+
 .insight-card p {
-    color: #666666;
+    color: var(--muted);
+
     margin-bottom: 20px;
 }
 
 
-/* ------------------------------
-   Newsletter
------------------------------- */
+.insight-card a {
+    font-weight: 700;
 
-.newsletter-section {
-    background: #f5f5f5;
+    transition: opacity 0.2s ease;
 }
 
-.newsletter {
-    padding-top: 100px;
-    padding-bottom: 100px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+
+.insight-card a:hover {
+    opacity: 0.55;
 }
 
-.newsletter h2 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.1;
+
+/* =========================================================
+   10. INSIGHTS PAGE
+   ========================================================= */
+
+.page-header {
+    padding-top: 110px;
+
+    padding-bottom: 80px;
+
+    max-width: 900px;
+}
+
+
+.page-header h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+}
+
+
+.page-header > p:last-child {
+    color: var(--muted);
+
+    font-size: 1.2rem;
+
+    margin-top: 25px;
+}
+
+
+/* ---------------------------------------------------------
+   ARTICLE LIST
+   --------------------------------------------------------- */
+
+.articles-section {
+    padding-bottom: 120px;
+}
+
+
+.article-list-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-top: 1px solid var(--border);
+
+    padding: 30px 0;
+
+    transition:
+        padding-left 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.article-list-item:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+
+.article-list-item:hover {
+    padding-left: 10px;
+}
+
+
+.article-date {
+    color: var(--muted);
+
+    font-size: 0.85rem;
+
+    margin-bottom: 8px;
+}
+
+
+.article-list-item h2 {
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+
+    line-height: 1.15;
+
     letter-spacing: -0.03em;
 }
 
+
+.article-arrow {
+    font-size: 2rem;
+
+    transition: transform 0.2s ease;
+}
+
+
+.article-list-item:hover .article-arrow {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   11. INDIVIDUAL ARTICLE
+   ========================================================= */
+
+.article {
+    padding-top: 80px;
+
+    padding-bottom: 120px;
+
+    max-width: 900px;
+}
+
+
+/* Back to insights */
+
+.back-link {
+    color: var(--muted);
+
+    font-size: 0.9rem;
+
+    transition: color 0.2s ease;
+}
+
+
+.back-link:hover {
+    color: var(--text);
+}
+
+
+/* Article header */
+
+.article-header {
+    padding-top: 70px;
+
+    padding-bottom: 60px;
+
+    max-width: 850px;
+}
+
+
+.article-header h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+}
+
+
+.article-introduction {
+    color: var(--muted);
+
+    font-size: 1.25rem;
+
+    margin-top: 30px;
+}
+
+
+/* Article body */
+
+.article-content {
+    max-width: 720px;
+
+    margin: 0 auto;
+}
+
+
+.article-content p {
+    font-size: 1.15rem;
+
+    margin-bottom: 25px;
+}
+
+
+.article-content h2 {
+    font-size: 2rem;
+
+    line-height: 1.15;
+
+    margin-top: 55px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Article newsletter CTA */
+
+.article-footer {
+    max-width: 720px;
+
+    margin: 60px auto 0;
+
+    padding-top: 40px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   12. ABOUT PAGE
+   ========================================================= */
+
+.about-section {
+    min-height: 650px;
+
+    display: grid;
+
+    grid-template-columns: 220px 1fr;
+
+    gap: 60px;
+
+    padding-top: 100px;
+
+    padding-bottom: 120px;
+}
+
+
+/* ---------------------------------------------------------
+   ROUND PROFILE PHOTO
+   --------------------------------------------------------- */
+
+.profile-photo {
+    width: 180px;
+
+    height: 180px;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    border-radius: 50%;
+
+    display: block;
+
+    box-shadow:
+        0 12px 35px rgba(60, 45, 40, 0.12);
+}
+
+
+body.dark-mode .profile-photo {
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+
+/* About story */
+
+.about-story {
+    max-width: 720px;
+}
+
+
+.about-story h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+
+    margin-bottom: 35px;
+}
+
+
+.about-story p:not(.eyebrow) {
+    font-size: 1.15rem;
+
+    color: var(--muted);
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   13. NEWSLETTER SECTION ON HOMEPAGE
+   ========================================================= */
+
+.newsletter-section {
+    background-color: var(--soft-background);
+
+    transition:
+        background-color 0.25s ease;
+}
+
+
+.newsletter {
+    padding-top: 100px;
+
+    padding-bottom: 100px;
+
+    max-width: 800px;
+}
+
+
+.newsletter h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+
+    line-height: 1.1;
+
+    letter-spacing: -0.03em;
+}
+
+
 .newsletter p:not(.eyebrow) {
-    color: #666666;
+    color: var(--muted);
+
     font-size: 1.1rem;
+
     max-width: 600px;
+
     margin-top: 20px;
+
     margin-bottom: 30px;
 }
 
 
-/* ------------------------------
-   Footer
------------------------------- */
+/* =========================================================
+   14. NEWSLETTER PAGE
+   ========================================================= */
 
-.site-footer {
-    border-top: 1px solid #eeeeee;
+.newsletter-page {
+    padding-top: 120px;
+
+    padding-bottom: 120px;
+
+    max-width: 800px;
 }
 
-.footer-content {
-    min-height: 100px;
+
+.newsletter-page h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+
+    line-height: 1.05;
+
+    letter-spacing: -0.04em;
+}
+
+
+.newsletter-intro {
+    max-width: 650px;
+
+    margin-top: 25px;
+
+    margin-bottom: 45px;
+
+    font-size: 1.15rem;
+
+    color: var(--muted);
+}
+
+
+/* Newsletter form */
+
+.newsletter-form {
+    max-width: 650px;
+}
+
+
+.newsletter-form label {
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+
+.newsletter-form-row {
     display: flex;
+
+    gap: 10px;
+}
+
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 14px 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 6px;
+
+    background-color: var(--background);
+
+    color: var(--text);
+
+    font-size: 1rem;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.newsletter-form input[type="email"]::placeholder {
+    color: var(--muted);
+}
+
+
+.newsletter-form input[type="email"]:focus {
+    outline: 2px solid var(--text);
+
+    outline-offset: 2px;
+}
+
+
+/* Subscribe button */
+
+.newsletter-form button {
+    border: none;
+
+    padding: 14px 22px;
+
+    background-color: var(--red);
+
+    color: #ffffff;
+
+    border-radius: 6px;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.newsletter-form button:hover {
+    background-color: var(--red-hover);
+
+    transform: translateY(-2px);
+}
+
+
+.newsletter-note {
+    margin-top: 12px;
+
+    font-size: 0.85rem;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   15. PRIVACY POLICY
+   ========================================================= */
+
+.privacy-page {
+    max-width: 800px;
+
+    padding-top: 100px;
+
+    padding-bottom: 120px;
+}
+
+
+.privacy-page h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+
+    margin-bottom: 15px;
+}
+
+
+.privacy-updated {
+    color: var(--muted);
+
+    margin-bottom: 60px;
+}
+
+
+.privacy-page h2 {
+    font-size: 1.6rem;
+
+    margin-top: 45px;
+
+    margin-bottom: 15px;
+}
+
+
+.privacy-page p {
+    color: var(--muted);
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   16. FOOTER
+   ========================================================= */
+
+.site-footer {
+    border-top: 1px solid var(--border);
+
+    background-color: var(--background);
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.footer-content {
+    min-height: 110px;
+
+    display: flex;
+
     align-items: center;
+
     justify-content: space-between;
-    color: #777777;
+
+    color: var(--muted);
+
     font-size: 0.9rem;
 }
 
-.footer-content div {
+
+.footer-links {
     display: flex;
+
     gap: 20px;
 }
 
 
-/* ------------------------------
-   Mobile
------------------------------- */
+.footer-links a {
+    transition: color 0.2s ease;
+}
 
-@media (max-width: 700px) {
+
+.footer-links a:hover {
+    color: var(--text);
+}
+
+
+/* =========================================================
+   17. MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    /* ---------------------------------------------
+       Navigation
+    --------------------------------------------- */
 
     .nav {
         align-items: flex-start;
-        padding-top: 20px;
-        padding-bottom: 20px;
+
         flex-direction: column;
-        gap: 15px;
+
+        padding-top: 20px;
+
+        padding-bottom: 20px;
     }
 
+
     .nav-links {
-        gap: 15px;
+        width: 100%;
+
+        gap: 10px 14px;
+
         flex-wrap: wrap;
     }
 
+
+    /* ---------------------------------------------
+       Homepage
+    --------------------------------------------- */
+
     .hero {
-        padding-top: 80px;
-        padding-bottom: 80px;
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+
+        padding-top: 70px;
+
+        padding-bottom: 70px;
     }
+
+
+    .hero-image {
+        order: -1;
+
+        height: 400px;
+    }
+
+
+    .hero-image img {
+        max-height: 400px;
+    }
+
+
+    /* ---------------------------------------------
+       Insight cards
+    --------------------------------------------- */
 
     .insights-grid {
         grid-template-columns: 1fr;
     }
 
+
     .section-heading {
         align-items: flex-start;
+
         flex-direction: column;
+
         gap: 15px;
     }
 
+
+    /* ---------------------------------------------
+       About
+    --------------------------------------------- */
+
+    .about-section {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+
+    .profile-photo {
+        width: 150px;
+
+        height: 150px;
+    }
+
+
+    /* ---------------------------------------------
+       Newsletter form
+    --------------------------------------------- */
+
+    .newsletter-form-row {
+        flex-direction: column;
+    }
+
+
+    .newsletter-form button {
+        width: 100%;
+    }
+
+
+    /* ---------------------------------------------
+       Footer
+    --------------------------------------------- */
+
     .footer-content {
         align-items: flex-start;
+
         flex-direction: column;
+
         justify-content: center;
+
         gap: 15px;
+    }
+
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =========================================================
+   18. SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    .container {
+        width: min(92%, 1100px);
+    }
+
+
+    .logo {
+        font-size: 1.7rem;
+    }
+
+
+    .nav-links {
+        font-size: 0.85rem;
+    }
+
+
+    .theme-toggle,
+    .nav-newsletter {
+        padding: 8px 12px;
+    }
+
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+
+    .hero-image {
+        height: 330px;
+    }
+
+
+    .hero-image img {
+        max-height: 330px;
+    }
+
+
+    .hero-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .hero-actions .button {
+        text-align: center;
+    }
+
+
+    .page-header {
+        padding-top: 80px;
+
+        padding-bottom: 60px;
+    }
+
+
+    .article-header {
+        padding-top: 50px;
+    }
+
+
+    .article-header h1 {
+        font-size: 3rem;
+    }
+
+
+    .footer-links {
+        gap: 12px;
     }
 }
